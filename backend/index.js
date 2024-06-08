@@ -1,7 +1,6 @@
 const express=require("express");
 const app=express();
 const bodyParser=require("body-parser")
-
 const adminRouter=require("./routes/admin")
 const userRouter=require("./routes/user")
 
