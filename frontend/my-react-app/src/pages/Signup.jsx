@@ -4,6 +4,7 @@ import { Heading } from "../components/heading";
 import { InputBox } from "../components/input";
 import { BottomWarning } from "../components/bottomwarning";
 import { SubHeading } from "../components/subheading";
+import { Top } from "../components/top";
 import axios from "axios"
 
 export const Signup=()=>{
@@ -16,6 +17,7 @@ export const Signup=()=>{
     return(
         <div className="flex justify-center">
         <div className="flex flex-col items-center justify-center w-80 ">
+            <Top label={"Xero Pay"}/>
             <Heading label={"Sign Up"}/>
             <SubHeading label={"Enter your information to create an Account"}/>
             <InputBox onChange={e=>{
