@@ -1,6 +1,6 @@
 export function Top({label}){
-    return <div className="flex">
-            <div className="font-xl flex justify-center">
+    return <div className="flex ">
+            <div className="text-4xl flex justify-center my-5 font-extralight">
                 {label}
             </div>
         </div>

@@ -12,12 +12,12 @@ export const Signup=()=>{
     const[lastName,setlastName]=useState('')
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('')
-    const [username,setUsername]=useState('')
+    const[username,setUsername]=useState('')
   
     return(
         <div className="flex justify-center">
-        <div className="flex flex-col items-center justify-center w-80 ">
-            <Top label={"Xero Pay"}/>
+        <div className="flex flex-col items-center justify-center w-120  ">
+            <Top label={"xero Pay"}/>
             <Heading label={"Sign Up"}/>
             <SubHeading label={"Enter your information to create an Account"}/>
             <InputBox onChange={e=>{
