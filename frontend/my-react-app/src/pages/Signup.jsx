@@ -13,7 +13,6 @@ export const Signup=()=>{
     const[lastName,setlastName]=useState('')
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('')
-    const[username,setUsername]=useState('')
   
     return(
         <div className="flex justify-center">
