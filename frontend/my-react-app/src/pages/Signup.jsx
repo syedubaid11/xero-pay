@@ -6,6 +6,7 @@ import { BottomWarning } from "../components/bottomwarning";
 import { SubHeading } from "../components/subheading";
 import { Top } from "../components/top";
 import axios from "axios"
+import { Button } from "../components/button";
 
 export const Signup=()=>{
     const[firstName,setfirstName]=useState('')
@@ -32,9 +33,9 @@ export const Signup=()=>{
             <InputBox onChange={e=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
-        
-           
+            <Button label={"Sign Up"}/>
         </div>
+        
 
         
         
