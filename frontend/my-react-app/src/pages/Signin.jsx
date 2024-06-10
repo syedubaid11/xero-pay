@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Top } from "../components/top"
 import { Heading } from "../components/heading"
+import { SubHeading } from "../components/subheading"
 import { InputBox } from "../components/input"
 import { Button } from "../components/button"
 import { BottomWarning } from "../components/bottomwarning"

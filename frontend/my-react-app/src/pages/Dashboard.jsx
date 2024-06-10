@@ -5,10 +5,10 @@ export const Dashboard=()=>{
     const[balance,setBalance]=useState("")
     return(
         <div>
-        <div className="flex justify-center border-2">
+        <div className="flex justify-center border-b-2">
            <Top label={"xero pay"}/>
         </div>
-        <Dashboardtop/>
+        <Dashboardtop />
         
 
         </div>
