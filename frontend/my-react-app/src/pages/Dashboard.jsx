@@ -4,13 +4,14 @@ import { Top } from "../components/top";
 export const Dashboard=()=>{
     const[balance,setBalance]=useState("")
     return(
-        <div>
+        <>
+        
         <div className="flex justify-center border-b-2">
            <Top label={"xero pay"}/>
         </div>
         <Dashboardtop />
         
 
-        </div>
+        </>
     )
 }

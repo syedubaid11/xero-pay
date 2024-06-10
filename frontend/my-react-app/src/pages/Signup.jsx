@@ -14,9 +14,14 @@ export const Signup=()=>{
     const[password,setPassword]=useState('')
   
     return(
+        <>
+         <div className="flex justify-center border-b-2">
+           <Top label={"xero pay"}/>
+        </div>
+        
         <div className="flex justify-center">
         <div className="flex flex-col items-center justify-center w-120 ">
-            <Top label={"xero Pay"}/>
+           
             <Heading label={"Sign Up"}/>
             <InputBox onChange={e=>{
                 setfirstName(e.target.value)
@@ -43,10 +48,7 @@ export const Signup=()=>{
             />
             <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
         </div>
-        
-
-        
-        
         </div>
+        </>
     )
 } 

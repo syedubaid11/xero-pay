@@ -11,10 +11,14 @@ export const Signin=()=>{
     const[password,setPassword]=useState('')
     const[email,setemail]=useState('')
     return(
+        <>
+         <div className="flex justify-center border-b-2">
+           <Top label={"xero pay"}/>
+        </div>
         
         <div className="flex justify-center">
         <div className="flex flex-col items-center justify-center w-120  ">
-            <Top label={"xero Pay"}/>
+            
             <Heading label={"Sign In"}/>
             
             <InputBox onChange={e=>{
@@ -28,5 +32,6 @@ export const Signin=()=>{
         </div>
 
         </div>
+        </>
     )
 }
