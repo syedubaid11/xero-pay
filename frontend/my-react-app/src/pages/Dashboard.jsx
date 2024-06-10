@@ -1,6 +1,16 @@
-export const  Dashboard=()=>{
+import { useState } from "react";
+import { Dashboardtop } from "../components/dashboardtop";
+import { Top } from "../components/top";
+export const Dashboard=()=>{
+    const[balance,setBalance]=useState("")
     return(
-        <>
-        hello this is also the same (work in progress)</>
+        <div>
+        <div className="flex justify-center border-2">
+           <Top label={"xero pay"}/>
+        </div>
+        <Dashboardtop/>
+        
+
+        </div>
     )
 }
