@@ -34,6 +34,7 @@ export const Signup=()=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
             <Button label={"Sign Up"}/>
+            <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
         </div>
         
 
