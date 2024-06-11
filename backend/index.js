@@ -1,16 +1,14 @@
-const express=require("express");
+const express=require("express")
+const rootRouter=require("./routes/index")
+const cors=require("cors")
+
 const app=express();
-const bodyParser=require("body-parser")
-const adminRouter=require("./routes/admin")
-const userRouter=require("./routes/user")
 
-app.use(bodyParser.json())
-app.use('/admin',adminRouter);
-app.use('/user',userRouter)
+app.use(cors());
+
+app.use(express.json());
+
+app.use("/api/v1",rootRouter)
 
 
-const PORT=1000;
-
-app.listen(PORT,()=>{
-    console.log(`The server is running on PORT ${PORT}`)
-})
+app.listen(3000);
