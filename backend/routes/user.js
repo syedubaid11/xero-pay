@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router=Router();
-const zod=require("zod")
+const zod=require("zod");
+const { User } =require("../db");
 
 
 
@@ -12,7 +13,7 @@ const signupBody=zod.object({
 
 })
 
-router.post("/signup",async(res,req)=>{
+router.post("/signup",async(req,res)=>{
     const{success}=signupBody.safeparse(req.body);
     if(!success){
         return res.status(411).json({
@@ -26,13 +27,15 @@ router.post("/signup",async(res,req)=>{
     return res.json({
         message:"Email already exists"
     })
-    const newUser= await User.createOne({
+    const user= await User.createOne({
         email:req.body.email,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         password:req.body.password
     })
-    console.log("user created successfully")
+    res.json({
+        message:"Account created successfully"
+    })
 })
 
 module.exports=router;
