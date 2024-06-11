@@ -1,5 +1,7 @@
 const mongoose=require("mongoose")
 
+mongoose.connect("")
+
 const userSchema=new mongoose.Schema({
     email:String,
     password:String,

@@ -5,10 +5,10 @@ const zod=require("zod")
 
 
 const signupBody=zod.object({
-    email:z.string.email(),
-    firstName:z.string(),
-    lastName:z.string(),
-    password:z.string()
+    email:zod.string().email(),
+    firstName:zod.string(),
+    lastName:zod.string(),
+    password:zod.string()
 
 })
 
@@ -26,14 +26,13 @@ router.post("/signup",async(res,req)=>{
     return res.json({
         message:"Email already exists"
     })
-
     const newUser= await User.createOne({
         email:req.body.email,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         password:req.body.password
-
     })
+    console.log("user created successfully")
 })
 
 module.exports=router;
