@@ -14,7 +14,7 @@ const signupBody=zod.object({
 })
 
 router.post("/signup",async(req,res)=>{
-    const{success}=signupBody.safeparse(req.body);
+    const{success}=signupBody.safeParse(req.body);
     if(!success){
         return res.status(411).json({
             message:"Email has already been taken"
@@ -27,7 +27,7 @@ router.post("/signup",async(req,res)=>{
     return res.json({
         message:"Email already exists"
     })
-    const user= await User.createOne({
+    const user= await User.create({
         email:req.body.email,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
