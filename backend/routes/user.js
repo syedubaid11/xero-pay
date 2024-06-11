@@ -21,12 +21,13 @@ router.post("/signup",async(req,res)=>{
         })
     }
     const existingUser=await User.findOne({
-        email:req.body.username
+        email: req.body.email
     })
     if(existingUser)
     return res.json({
         message:"Email already exists"
     })
+    else{
     const user= await User.create({
         email:req.body.email,
         firstName:req.body.firstName,
@@ -36,6 +37,7 @@ router.post("/signup",async(req,res)=>{
     res.json({
         message:"Account created successfully"
     })
+    }
 })
 
 module.exports=router;
