@@ -35,16 +35,19 @@ export const Signup=()=>{
             <InputBox onChange={e=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
-            <Button label={"Sign Up"} onClick={async()=>{
-                const response=await axios.post("http://localhost:3000/api/v1/user/signup",{
+            <Button onClick={async()=>{
+                const response=await axios.post("http://localhost:3000/user/signup",{
                     email,
                     firstName,
                     lastName,
                     password
                 })
+                localStorage.setItem("token", response.data.token)
+            navigate("/dashboard")
 
                 }
             }
+            label={"Sign Up"}
             />
             <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
         </div>
