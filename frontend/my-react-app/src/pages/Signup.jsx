@@ -6,6 +6,7 @@ import { BottomWarning } from "../components/bottomwarning";
 import { Top } from "../components/top";
 import axios from "axios"
 import { Button } from "../components/button";
+import {Footer} from "../components/footer"
 
 export const Signup=()=>{
     const[firstName,setfirstName]=useState('')
@@ -52,6 +53,7 @@ export const Signup=()=>{
             <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
         </div>
         </div>
+        <Footer/>
         </>
     )
 } 
