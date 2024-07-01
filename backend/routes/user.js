@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router=Router();
 const zod=require("zod");
 const { User } =require("../db");
+const { RouterProvider } = require("react-router-dom");
 
 
 
@@ -38,6 +39,17 @@ router.post("/signup",async(req,res)=>{
         message:"Account created successfully"
     })
     }
+})
+
+router.post("/signin",async(res,req)=>{
+    const {success}=signinBody.safeParse(req.body);
+    if(!success){
+        return res.status(411).json({
+            message:"Cant fetch details "
+        })
+    
+    }
+
 })
 
 module.exports=router;
