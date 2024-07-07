@@ -7,12 +7,14 @@ import { Top } from "../components/top";
 import axios from "axios"
 import { Button } from "../components/button";
 import {Footer} from "../components/footer"
+import { useNavigate } from "react-router-dom";
 
 export const Signup=()=>{
     const[firstName,setfirstName]=useState('')
     const[lastName,setlastName]=useState('')
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('')
+    const navigate=useNavigate();
   
     return(
         <>
