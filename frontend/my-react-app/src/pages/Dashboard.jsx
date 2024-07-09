@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Dashboardtop } from "../components/dashboardtop";
 import { Top } from "../components/top";
+import { transaction } from "../components/transactionhistory";
+
 export const Dashboard=()=>{
     const[balance,setBalance]=useState("")
+    
     return(
         <>
         
@@ -10,6 +13,9 @@ export const Dashboard=()=>{
            <Top label={"xero pay"}/>
         </div>
         <Dashboardtop />
+        <transaction />
+        
+        
         
 
         </>
