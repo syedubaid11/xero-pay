@@ -14,6 +14,10 @@ const signupBody=zod.object({
 
 })
 
+const signinBody=zod.object({
+    
+})
+
 router.post("/signup",async(req,res)=>{
     const{success}=signupBody.safeParse(req.body);
     if(!success){
@@ -49,6 +53,11 @@ router.post("/signin",async(res,req)=>{
         })
     
     }
+
+})
+
+router.get("/users",aysnc(res,req){
+
 
 })
 
