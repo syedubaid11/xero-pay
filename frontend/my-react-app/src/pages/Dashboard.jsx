@@ -9,7 +9,9 @@ export const Dashboard=()=>{
     useEffect(()=>{
         axios.get('http://localhost:3000/user/data')
         .then(response => {
-          console.log(response.data);
+          console.log(response.data[0].email);
+          setBalance(response.data[0].email)
+        
         })
         .catch(error => {
           console.error('There was an error fetching the data!', error);
@@ -24,7 +26,7 @@ export const Dashboard=()=>{
         <div className="flex justify-center border-b-2">
            <Top label={"xero pay"}/>
         </div>
-        <Dashboardtop />
+        <Dashboardtop balance={balance}/>
         
         
         
