@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Usersinfo from "./usersinfo";
 
 export const Users=()=>{
     const[user,setUser]=useState("")
@@ -17,21 +18,22 @@ export const Users=()=>{
 
     },[])
 
-
-    /* map the users and display the firstName and balance 
+//error in this line 
     const map=user.map((item)=>{
       return(
+        <Usersinfo
+        firstName={item.name}
+        />
         
-        
-        
+      
       )
     })
-    */
+    
     
 
     return(
         <>
-        
+        {map}
         </>
     )
 

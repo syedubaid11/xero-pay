@@ -1,4 +1,4 @@
-export default function Card(props){
+export default function Usersinfo(props){
     return(
         <div className="flex justify between ">
             <div className="ml-4">
