@@ -8,13 +8,9 @@ import { Users } from "../components/users";
 export const Dashboard=()=>{
     return(
         <>
-        
-        <div className="flex justify-center border-b-2">
-           <Top label={"xero pay"}/>
-        </div>
+        <Top label={"xero pay"}/>
         <Dashboardtop/>
         <Users/>
-
         </>
     )
 }

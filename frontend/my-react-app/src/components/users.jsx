@@ -9,9 +9,7 @@ export const Users=()=>{
     useEffect(()=>{
         axios.get('http://localhost:3000/user/data')
         .then(response => {
-          console.log(response.data.user)
-          const users=response.data;
-        
+          setUser(response.data)
         })
         .catch(error => {
           console.error('There was an error fetching the data!', error);
@@ -19,9 +17,21 @@ export const Users=()=>{
 
     },[])
 
+
+    /* map the users and display the firstName and balance 
+    const map=user.map((item)=>{
+      return(
+        
+        
+        
+      )
+    })
+    */
+    
+
     return(
         <>
-        Hello
+        
         </>
     )
 
