@@ -10,7 +10,10 @@ export const Users=()=>{
     useEffect(()=>{
         axios.get('http://localhost:3000/user/data')
         .then(response => {
-          setUser(response.data)
+          const data=response.data
+          const id=data.map((item)=>item.firstName)
+          setUser(id)
+          console.log(user)
         })
         .catch(error => {
           console.error('There was an error fetching the data!', error);
@@ -18,23 +21,24 @@ export const Users=()=>{
 
     },[])
 
-//error in this line 
+/*
     const map=user.map((item)=>{
       return(
         <Usersinfo
         firstName={item.name}
         />
-        
-      
       )
     })
     
-    
-
     return(
         <>
         {map}
         </>
     )
+    */
+   return(
+    <>
+    test</>
+   )
 
 }
