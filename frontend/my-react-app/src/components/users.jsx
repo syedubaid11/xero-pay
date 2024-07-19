@@ -20,25 +20,8 @@ export const Users=()=>{
         });
 
     },[])
+   
 
-/*
-    const map=user.map((item)=>{
-      return(
-        <Usersinfo
-        firstName={item.name}
-        />
-      )
-    })
-    
-    return(
-        <>
-        {map}
-        </>
-    )
-    */
-   return(
-    <>
-    test</>
-   )
+
 
 }
