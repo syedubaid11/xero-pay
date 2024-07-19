@@ -1,5 +1,5 @@
 import { Button } from "../components/button"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 export const Home=()=>{
@@ -15,7 +15,7 @@ export const Home=()=>{
 
             <div className="flex justify-center border-4 mt-5 text-2xl">
                 <div className="mr-4">
-                 <Button label={"Sign Up"} onClick={navigate("/Signup")}/>
+                 <Button label={"Sign Up"} onClick={async()=>{navigate("/Signup")}}/>
                 </div>
                 <Button label={"Sign In"}/>
             </div>  
