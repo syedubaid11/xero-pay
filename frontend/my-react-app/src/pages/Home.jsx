@@ -13,7 +13,7 @@ export const Home=()=>{
                 xero pay
             </div>
 
-            <div className="text-3xl mb-6">Seamless Payments , Simplified Life</div>            
+            <div className="text-3xl mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
 
             <div className="flex justify-center  mt-5 text-2xl">
                 <div className="mr-4">

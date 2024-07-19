@@ -9,7 +9,7 @@ import { BottomWarning } from "../components/bottomwarning"
 
 export const Signin=()=>{
     const[password,setPassword]=useState('')
-    const[email,setemail]=useState('')
+    const[email,setEmail]=useState('')
     return(
         <>
          <div className="flex justify-center border-b-2">
