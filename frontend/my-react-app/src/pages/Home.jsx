@@ -1,10 +1,24 @@
+import { AuroraBackground } from "../components/aurora-background";
 import { Button } from "../components/button"
 import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion";
 
 
 export const Home=()=>{
     const navigate=useNavigate();
     return(
+        <>
+        <AuroraBackground>
+        <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+        className="relative flex flex-col gap-4 items-center justify-center px-4"
+      >
         <div className="flex items-center justify-center w-screen h-screen ">
 
         <div className="flex-col">
@@ -25,7 +39,12 @@ export const Home=()=>{
             </div>  
         </div>    
 
-        </div>   
+        </div> 
+        </motion.div>
+        </AuroraBackground>
+  
+
+        </>
 
     )
 }
