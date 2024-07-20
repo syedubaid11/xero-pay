@@ -6,6 +6,7 @@ import { InputBox } from "../components/input"
 import { Button } from "../components/button"
 import { BottomWarning } from "../components/bottomwarning"
 import { motion } from "framer-motion"
+import axios from "axios"
 
 
 export const Signin=()=>{
@@ -37,7 +38,13 @@ export const Signin=()=>{
             <InputBox onChange={e=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
-            <Button label={"Sign In "}/>
+            <Button label={"Sign In "} onClick={async()=>{
+                const response=await axios.post("http://localhost:3000/user/signin",{
+                    password,
+                    email
+                })
+
+            }}/>
             <BottomWarning label={"Don't have an account?"} buttonText={"Sign Up"} to={"/signup"}/>
         </div>
 

@@ -15,7 +15,8 @@ const signupBody=zod.object({
 })
 
 const signinBody=zod.object({
-    
+    password:zod.string(),
+    email:zod.string().email()  
 })
 
 router.post("/signup",async(req,res)=>{
@@ -44,16 +45,10 @@ router.post("/signup",async(req,res)=>{
     })
     }
 })
-
-router.post("/signin",async(res,req)=>{
+                     //middleware add
+router.post("/signin",                 async(res,req)=>{
     const {success}=signinBody.safeParse(req.body);
-    if(!success){
-        return res.status(411).json({
-            message:"Cant fetch details "
-        })
     
-    }
-
 })
 
 
