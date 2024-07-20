@@ -14,7 +14,7 @@ export const Home=()=>{
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
           delay: 0.3,
-          duration: 0.8,
+          duration: 0.7,
           ease: "easeInOut",
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
@@ -27,13 +27,13 @@ export const Home=()=>{
                 xero pay
             </div>
 
-            <div className="text-3xl mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
+            <div className="text-3xl font-extralight mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
 
             <div className="flex justify-center  mt-5 text-2xl">
-                <div className="mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70  duration-300 ...">
+                <div className="font-extralight mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70  duration-300 ...">
                  <Button label={"Sign Up"} onClick={async()=>{navigate("/Signup")}}/>
                 </div>
-                <div className="mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70  duration-300 ...">
+                <div className="font-extralight mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70  duration-300 ...">
                   <Button label={"Sign In"} onClick={async()=>{navigate("/Signin")}}/>
                 </div>
             </div>  
