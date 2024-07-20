@@ -7,6 +7,8 @@ import axios from "axios"
 import { Button } from "../components/button";
 import {Footer} from "../components/footer"
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 export const Signup=()=>{
     const[firstName,setfirstName]=useState('')
@@ -17,6 +19,16 @@ export const Signup=()=>{
   
     return(
         <>
+        <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.2,
+          duration: 0.3,
+          ease: "easeInOut",
+        }}
+        >
+        
          <div className="flex justify-center border-b-2">
            <Top label={"xero pay"}/>
         </div>
@@ -53,7 +65,8 @@ export const Signup=()=>{
             <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
         </div>
         </div>
-        <Footer/>
+        
+        </motion.div>
         </>
     )
 } 

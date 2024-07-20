@@ -5,6 +5,7 @@ import { SubHeading } from "../components/subheading"
 import { InputBox } from "../components/input"
 import { Button } from "../components/button"
 import { BottomWarning } from "../components/bottomwarning"
+import { motion } from "framer-motion"
 
 
 export const Signin=()=>{
@@ -12,6 +13,15 @@ export const Signin=()=>{
     const[email,setEmail]=useState('')
     return(
         <>
+        <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.2,
+          duration: 0.3,
+          ease: "easeInOut",
+        }}
+        >
          <div className="flex justify-center border-b-2">
            <Top label={"xero pay"}/>
         </div>
@@ -32,6 +42,8 @@ export const Signin=()=>{
         </div>
 
         </div>
+        </motion.div>
+
         </>
     )
 }
