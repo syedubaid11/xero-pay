@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router=Router();
 const zod=require("zod");
 const { User } =require("../db");
+const { Account } =require("../db")
 const { RouterProvider } = require("react-router-dom");
 
 
@@ -18,7 +19,10 @@ const signinBody=zod.object({
     password:zod.string(),
     email:zod.string().email()  
 })
-
+const accountBody=zod.object({
+    userId:zod.string(),
+    balance:zod.string()
+})
 router.post("/signup",async(req,res)=>{
     const{success}=signupBody.safeParse(req.body);
     if(!success){
@@ -63,5 +67,31 @@ router.get('/data', async (req, res) => {
     }
   });
 
-module.exports=router;
 
+
+
+router.post('/account',async(req,res)=>{
+    const success=accountBody.safeParse(req.body);
+    if(!success){
+        return res.json("Invalid Request")
+    }
+    const existingUser=User.findOne({
+        _id:req.body.userId
+    })
+    if(existingUser){
+        const account=Account.create({
+            userId:req.body.userId,
+            balance:req.body.balance
+        })
+        return res.json("Balance has been successfully added to the user")
+    }
+    else{
+        return res.json("Could not find user with that account")
+    }
+    
+
+})
+
+
+
+module.exports=router;

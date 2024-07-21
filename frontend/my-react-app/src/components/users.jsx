@@ -4,7 +4,7 @@ import Usersinfo from "./usersinfo";
 
 export const Users=()=>{
     const[user,setUser]=useState([ ])
-    const[balance,setBalance]=useState("")
+    const[balance,setBalance]=useState([])
 
 
     useEffect(()=>{
