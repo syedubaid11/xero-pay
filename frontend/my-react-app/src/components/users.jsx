@@ -3,7 +3,7 @@ import axios from "axios";
 import Usersinfo from "./usersinfo";
 
 export const Users=()=>{
-    const[user,setUser]=useState("")
+    const[user,setUser]=useState([ ])
     const[balance,setBalance]=useState("")
 
 
@@ -20,6 +20,20 @@ export const Users=()=>{
         });
 
     },[])
+
+    const map=user.map((item)=>{
+      return(
+        <Usersinfo name={item} />
+        )
+    })
+
+    return(
+      <>
+        {map}
+      </>
+    )
+
+
    
 
 
