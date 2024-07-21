@@ -45,12 +45,14 @@ router.post("/signup",async(req,res)=>{
     })
     }
 })
-                     //middleware add
+
+
+/*middleware add
 router.post("/signin",                 async(res,req)=>{
     const {success}=signinBody.safeParse(req.body);
     
 })
-
+*/
 
 router.get('/data', async (req, res) => {
     try {
