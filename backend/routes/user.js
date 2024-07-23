@@ -67,7 +67,16 @@ router.get('/data', async (req, res) => {
     }
   });
 
+router.get('/account',async(req,res)=>{
+    try{
+        const data=await Account.find();
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message:error.message});
+    }
 
+})  
 
 
 router.post('/account',async(req,res)=>{
