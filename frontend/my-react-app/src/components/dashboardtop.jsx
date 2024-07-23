@@ -14,7 +14,7 @@ export const Dashboardtop=({balance})=>{
                 Users
             </div>
 
-            <div className="flex justify-end mt-20 mr-10 font-extralight text-3xl ">
+            <div className="flex justify-end mt-20 mr-12 font-extralight text-3xl ">
                 Pay
             </div>
             
