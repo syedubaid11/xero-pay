@@ -3,8 +3,8 @@ import axios from "axios";
 import Usersinfo from "./usersinfo";
 
 export const Users=()=>{
-    const[user,setUser]=useState([])
-    const[balance,setBalance]=useState([])
+    const[user,setUser]=useState([ ])
+    const[balance,setBalance]=useState([ ])
 
 
     useEffect(()=>{
@@ -18,14 +18,18 @@ export const Users=()=>{
         .catch(error => {
           console.error('There was an error fetching the data!', error);
         });
-
+        /*
         axios.get("http://localhost:3000/user/account")
         .then(response=>{
-          const accountdata=response.data;
-          const balance=accountdata.map((item)=>item.balance);
+          const accountData=response.data;
+          const balance=accountData.map((item)=>item.balance);
           setBalance(balance);
           console.log(balance)
         })
+        .catch(error=>{
+          console.error("There was an error fetchng the data",error);
+        })
+        */
 
     },[])
 
@@ -34,16 +38,19 @@ export const Users=()=>{
         <Usersinfo name={item} />
         )
     })
-
+   /*
     const map2=balance.map((item)=>{
       return(
-        <Usersinfo balance={balance}/>
+        <Usersinfo balance={item}/>
       )
     })
+    */
     return(
       <>
-        {map}
-        {map2}
+        <div >
+          {map}
+        </div>
+
       </>
     )
 
