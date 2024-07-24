@@ -18,7 +18,10 @@ export const Users=()=>{
         .catch(error => {
           console.error('There was an error fetching the data!', error);
         });
-        /*
+
+
+        /* balance of users
+
         axios.get("http://localhost:3000/user/account")
         .then(response=>{
           const accountData=response.data;
@@ -31,6 +34,7 @@ export const Users=()=>{
         })
         */
 
+
     },[])
 
     const map=user.map((item)=>{
@@ -38,6 +42,8 @@ export const Users=()=>{
         <Usersinfo name={item} />
         )
     })
+
+    
    /*
     const map2=balance.map((item)=>{
       return(
@@ -45,6 +51,7 @@ export const Users=()=>{
       )
     })
     */
+   
     return(
       <>
         <div >
