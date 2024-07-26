@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Usersinfo from "./usersinfo";
 import { ButtonDashboard } from "./button-dashboard";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Users=()=>{
     const[user,setUser]=useState([ ])
-    const[userid,setUserid]=useState([ ])
+
+    const navigate=useNavigate();
 
 
     useEffect(()=>{
         axios.get('http://localhost:3000/user/data')
         .then(response => {
           const data=response.data
-          const id=data.map((item)=>item.firstName)
-          setUser(id)
-          console.log(user)
+          //setting up the user state
+          setUser(data)
+          console.log(data)
+          
         })
         .catch(error => {
           console.error('There was an error fetching the data!', error);
@@ -26,10 +29,10 @@ export const Users=()=>{
     const map=user.map((item)=>{
       return(
         <div className="flex mt-5 font-light justify-between text-xl ">
-          <Usersinfo name={item} />
-          <ButtonDashboard label={"Pay"}/>
+          <Usersinfo name={item.firstName} />
+          <ButtonDashboard label={"Pay"} onClick={(e)=>{navigate("/pay?id="+item._id+"&name="+item.firstName)}}/>
         </div>
-        )
+        ) 
     })
   
     return(
