@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Usersinfo from "./usersinfo";
+import { ButtonDashboard } from "./button-dashboard";
 
 export const Users=()=>{
     const[user,setUser]=useState([ ])
-    const[balance,setBalance]=useState([ ])
+    const[userid,setUserid]=useState([ ])
 
 
     useEffect(()=>{
@@ -20,38 +21,17 @@ export const Users=()=>{
         });
 
 
-        /* balance of users
-
-        axios.get("http://localhost:3000/user/account")
-        .then(response=>{
-          const accountData=response.data;
-          const balance=accountData.map((item)=>item.balance);
-          setBalance(balance);
-          console.log(balance)
-        })
-        .catch(error=>{
-          console.error("There was an error fetchng the data",error);
-        })
-        */
-
-
     },[])
 
     const map=user.map((item)=>{
       return(
-        <Usersinfo name={item} />
+        <div className="flex mt-5 font-light justify-between text-xl ">
+          <Usersinfo name={item} />
+          <ButtonDashboard label={"Pay"}/>
+        </div>
         )
     })
-
-    
-   /*
-    const map2=balance.map((item)=>{
-      return(
-        <Usersinfo balance={item}/>
-      )
-    })
-    */
-   
+  
     return(
       <>
         <div >

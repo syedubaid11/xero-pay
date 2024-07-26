@@ -6,7 +6,7 @@ export const Dashboard=()=>{
     return(
         <>
         <Top label={"xero pay"}/>
-        <Dashboardtop balance={" $10000"}/>
+        <Dashboardtop balance={"$10000"}/>
         <Users/>
         </>
     )
