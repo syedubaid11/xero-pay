@@ -3,12 +3,15 @@ import { useSearchParams } from "react-router-dom"
 import { ButtonDashboard } from "../components/button-dashboard";
 import {motion} from "framer-motion"
 import { Top } from "../components/top";
+import { useState } from "react";
 
 
 export const Pay=()=>{
     const [searchParams]=useSearchParams();
     const id=searchParams.get("id");
     const name=searchParams.get("name");
+    const[amount,setAmount]=useState([])
+    console.log(amount)
     return(
         <>
         <motion.div
@@ -28,10 +31,11 @@ export const Pay=()=>{
                     <p>Name: {name}</p>
                 </div>
                 <div className="flex ">
-                    <InputBox label={"Enter the amount"} />
+                    <InputBox onChange={(e)=>setAmount(e.target.value)}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                axios.post
+                                axios.put("http://localhost:3000/user/pay")
+                                
                             }}label={"Pay"}/>
                         </div>
                 </div>
