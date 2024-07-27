@@ -11,7 +11,18 @@ export const Pay=()=>{
     const id=searchParams.get("id");
     const name=searchParams.get("name");
     const[amount,setAmount]=useState([])
+    const[error,setError]=useState("")
     console.log(amount)
+
+    const handleChange=(e)=>{
+        if(e.target.value>10000){
+            setError("Amount cannot be more than 10000!")
+        }
+        else {
+            setAmount(e.target.value)
+            setError("")
+        }
+    }
     return(
         <>
         <motion.div
@@ -31,13 +42,18 @@ export const Pay=()=>{
                     <p>Name: {name}</p>
                 </div>
                 <div className="flex ">
-                    <InputBox onChange={(e)=>setAmount(e.target.value)}label={"Enter the amount"} />
+                    <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
                                 axios.put("http://localhost:3000/user/pay")
                                 
                             }}label={"Pay"}/>
                         </div>
+                
+                </div>
+
+                <div className="mt-10 text-red-800">
+                    {error}
                 </div>
                 
             </div>
