@@ -4,6 +4,7 @@ import { ButtonDashboard } from "../components/button-dashboard";
 import {motion} from "framer-motion"
 import { Top } from "../components/top";
 import { useState } from "react";
+import axios from "axios";
 
 
 export const Pay=()=>{
@@ -45,7 +46,9 @@ export const Pay=()=>{
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                axios.put("http://localhost:3000/user/pay")
+                                const response=axios.put("http://localhost:3000/user/pay"){
+                                    
+                                }
                                 
                             }}label={"Pay"}/>
                         </div>
