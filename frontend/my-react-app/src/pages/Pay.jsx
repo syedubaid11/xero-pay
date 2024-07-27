@@ -46,9 +46,7 @@ export const Pay=()=>{
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                const response=axios.put("http://localhost:3000/user/pay"){
-                                    
-                                }
+                                const response=axios.put("http://localhost:3000/user/pay")
                                 
                             }}label={"Pay"}/>
                         </div>
