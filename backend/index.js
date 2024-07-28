@@ -8,7 +8,7 @@ const passport=require("passport");
 const app=express();
 
 app.use(cors({
-    origin:["https://xero-pay-frontend.vercel.app/"],
+    origin:["https://xero-pay-frontend.vercel.app"],
     methods:["POST,GET"],
     credentials:true
 }));
