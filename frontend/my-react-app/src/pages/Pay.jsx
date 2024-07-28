@@ -46,7 +46,7 @@ export const Pay=()=>{
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                const response=axios.post("https://xero-pay-backend.vercel.app/pay",{
+                                const response=axios.post("https://xero-pay-backend.vercel.app/user/pay",{
                                     balance
                                 }
                                 .then(response=>{
