@@ -5,7 +5,6 @@ import { BottomWarning } from "../components/bottomwarning";
 import { Top } from "../components/top";
 import axios from "axios"
 import { Button } from "../components/button";
-import {Footer} from "../components/footer"
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 

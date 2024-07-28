@@ -1,8 +1,6 @@
 const express=require("express")
-const rootRouter=require("./routes/index")
 const cors=require("cors")
 const userRouter=require("./routes/user")
-const passport=require("passport");
 
 
 const app=express();
