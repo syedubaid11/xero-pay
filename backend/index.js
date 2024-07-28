@@ -1,6 +1,6 @@
-const express=require("express")
-const cors=require("cors")
-const userRouter=require("./routes/user")
+const express=require("express");
+const cors=require("cors");
+const userRouter=require("./routes/user");
 
 
 const app=express();
@@ -15,5 +15,5 @@ const PORT=3000;
 
 
 app.listen(PORT,()=>{
-    console.log(`Server is running on PORT :${PORT}`)
+    console.log(`Server is running on PORTT :${PORT}`)
 });
