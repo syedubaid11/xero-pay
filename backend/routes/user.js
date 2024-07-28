@@ -101,6 +101,8 @@ router.post('/account',async(req,res)=>{
 
 })
 
-
+router.put('/account',async(res,req)=>{
+    
+})
 
 module.exports=router;
