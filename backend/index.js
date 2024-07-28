@@ -6,9 +6,8 @@ const userRouter=require("./routes/user")
 const app=express();
 
 app.use(cors({
-    origin:["https://xero-pay-frontend.vercel.app"],
-    methods:["POST,GET"],
-    credentials:true
+    origin:["https://xero-pay-frontend.vercel.app"]
+    
 }));
 
 app.use(express.json());
