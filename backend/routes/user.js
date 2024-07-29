@@ -3,7 +3,6 @@ const router=Router();
 const zod=require("zod");
 const { User } =require("../db");
 const { Account } =require("../db")
-const { RouterProvider } = require("react-router-dom");
 
 
 
@@ -27,7 +26,7 @@ router.post("/signup",async(req,res)=>{
     const{success}=signupBody.safeParse(req.body);
     if(!success){
         return res.status(411).json({
-            message:"Email has already been taken"
+            message:"Emaill has already been taken"
         })
     }
     const existingUser=await User.findOne({
