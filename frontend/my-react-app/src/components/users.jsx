@@ -11,7 +11,7 @@ export const Users=()=>{
 
 
     useEffect(()=>{
-        axios.get('https://xero-pay-backend.vercel.app/data')
+        axios.get('https://xero-pay-backend.vercel.app/user/data')
         .then(response => {
           const data=response.data
           //setting up the user state
