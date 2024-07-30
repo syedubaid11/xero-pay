@@ -56,13 +56,14 @@ export const Signup=()=>{
                             lastName,
                             password
                         })
+                        navigate("/dashboard")
+                       localStorage.setItem("token", response.data.token)
                     }
                     catch(error){
                         <p>Please Update all the fields correcly!</p>
                     }
                    
-                    navigate("/dashboard")
-                    localStorage.setItem("token", response.data.token)
+                    
                     
                     }
                 }
