@@ -56,7 +56,7 @@ export const Signup=()=>{
                         password
                     })
                     if(!response){
-                        <Error/>
+                        <p>Invalid Details!</p>
                     }
                     navigate("/dashboard")
                     localStorage.setItem("token", response.data.token)
