@@ -7,7 +7,7 @@ import axios from "axios"
 import { Button } from "../components/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { Error } from "../components/error"
 
 export const Signup=()=>{
     const[firstName,setfirstName]=useState('')
