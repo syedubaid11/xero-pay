@@ -66,7 +66,8 @@ export const Signup=()=>{
                 }
                 label={"Sign Up"}
                 />
-                <Error error={error}/>
+                
+                <Error label={error}/>
                 <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
             </div>
         </div>

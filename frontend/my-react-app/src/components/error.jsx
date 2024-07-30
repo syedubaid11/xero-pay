@@ -1,9 +1,9 @@
-export const Error=(error)=>{
+export const Error=({label})=>{
     return(
         
         <div className="flex">
             <div className="flex justify-center">
-                <p>{error}</p>
+                <p>{label}</p>
             </div>
 
         </div>
