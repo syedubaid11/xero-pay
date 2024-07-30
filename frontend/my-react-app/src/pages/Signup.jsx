@@ -7,7 +7,6 @@ import axios from "axios"
 import { Button } from "../components/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Error } from "../components/error"
 
 
 export const Signup=()=>{
@@ -50,21 +49,17 @@ export const Signup=()=>{
                     setPassword(e.target.value)
                 }} label={"Enter your Password"}placeholder={"Password"} />
                 <Button onClick={async()=>{
-                    try{
-                        const response=await axios.post("https://xero-pay-backend.vercel.app/user/signup",{
-                            email,
-                            firstName,
-                            lastName,
-                            password
-                        })
-                        navigate("/dashboard")
-                       localStorage.setItem("token", response.data.token)
-                    }
-                    catch(error){
+                    const response=await axios.post("https://xero-pay-backend.vercel.app/user/signup",{
+                        email,
+                        firstName,
+                        lastName,
+                        password
+                    })
+                    if(!response){
                         <Error/>
                     }
-                   
-                    
+                    navigate("/dashboard")
+                    localStorage.setItem("token", response.data.token)
                     
                     }
                 }
