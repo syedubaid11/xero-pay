@@ -14,6 +14,7 @@ export const Signup=()=>{
     const[lastName,setlastName]=useState('')
     const[email,setEmail]=useState('')
     const[password,setPassword]=useState('')
+    const[error,setError]=useState('')
     const navigate=useNavigate();
   
     return(
@@ -56,7 +57,7 @@ export const Signup=()=>{
                         password
                     })
                     if(!response){
-                        <p>Invalid Details!</p>
+                        setError("Invalid Details")
                     }
                     navigate("/dashboard")
                     localStorage.setItem("token", response.data.token)
@@ -65,6 +66,7 @@ export const Signup=()=>{
                 }
                 label={"Sign Up"}
                 />
+                <Error error={error}/>
                 <BottomWarning label={"Already Signed Up?"} buttonText={"Sign In"} to={"/signin"}/>
             </div>
         </div>

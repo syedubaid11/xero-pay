@@ -1,9 +1,9 @@
-export const Error=()=>{
+export const Error=(error)=>{
     return(
         
         <div className="flex">
             <div className="flex justify-center">
-                <p>Please Fill in the details correcly!</p>
+                <p>{error}</p>
             </div>
 
         </div>
