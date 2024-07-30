@@ -7,6 +7,7 @@ import axios from "axios"
 import { Button } from "../components/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Error } from "../components/error"
 
 
 export const Signup=()=>{
@@ -60,7 +61,7 @@ export const Signup=()=>{
                        localStorage.setItem("token", response.data.token)
                     }
                     catch(error){
-                        <p>Please Update all the fields correcly!</p>
+                        <Error/>
                     }
                    
                     
