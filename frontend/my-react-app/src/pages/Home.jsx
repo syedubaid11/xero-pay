@@ -17,16 +17,18 @@ export const Home=()=>{
           duration: 0.7,
           ease: "easeInOut",
         }}
+        className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
     
+        <div className="flex items-center justify-center w-screen h-screen ">
 
-        <div className="flex flex-col justify-center items-center ">
+        <div className="flex-col">
 
-            <div className="flex justify-center text-6xl font-extralight mb-20">
+            <div className="flex justify-center text-6xl font-extralight  mb-20">
                 xero pay
             </div>
 
-            <div className="flex justify-center text-3xl font-extralight mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
+            <div className="flex justify-centers text-3xl font-extralight mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
 
             <div className="flex justify-center  mt-5 text-2xl">
                 <div className="font-extralight mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70  duration-300 ...">
@@ -38,6 +40,7 @@ export const Home=()=>{
             </div>  
         </div>    
 
+        </div> 
         </motion.div>
         </AuroraBackground>
         </>
