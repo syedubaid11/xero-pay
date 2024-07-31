@@ -39,7 +39,7 @@ export const Signin=()=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
             <Button label={"Sign In "} onClick={async()=>{
-                const response=await axios.post("https://xero-pay-backend.vercel.app/signin",{
+                const response=await axios.get("https://xero-pay-backend.vercel.app/signin",{
                     password,
                     email
                 })
