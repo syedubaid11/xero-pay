@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export const Home=()=>{
     const navigate=useNavigate();
     return(
-        <>
+        <div className="p-0 m-0">
         <AuroraBackground>
         <motion.div
         initial={{ opacity: 0.0, y: 40 }}
@@ -17,7 +17,7 @@ export const Home=()=>{
           duration: 0.7,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center "
+        className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
     
 
@@ -41,7 +41,7 @@ export const Home=()=>{
 
         </motion.div>
         </AuroraBackground>
-        </>
+        </div>
 
     )
 }
