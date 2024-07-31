@@ -27,7 +27,7 @@ export const Home=()=>{
                 xero pay
             </div>
 
-            <div className="flex justify-center text-3xl font-extralight truncate mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
+            <div className="flex justify-center text-2xl font-extralight whitespace-nowrap mb-6 border-b-2">Seamless Payments , Simplified Life</div>            
 
             <div className="flex justify-center  mt-5 text-2xl">
                 <div className="font-extralight mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70  duration-300 ...">
