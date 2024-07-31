@@ -17,7 +17,6 @@ export const Home=()=>{
           duration: 0.7,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center"
       >
     
         <div className="flex items-center justify-center w-screen h-screen ">
