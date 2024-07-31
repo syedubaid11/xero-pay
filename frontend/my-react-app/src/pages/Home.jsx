@@ -7,8 +7,7 @@ import { motion } from "framer-motion";
 export const Home=()=>{
     const navigate=useNavigate();
     return(
-        <div>
-        
+        <>
         <AuroraBackground>
         <motion.div
         initial={{ opacity: 0.0, y: 40 }}
@@ -44,7 +43,7 @@ export const Home=()=>{
         </div> 
         </motion.div>
         </AuroraBackground>
-        </div>
+        </>
 
     )
 }
