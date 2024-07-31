@@ -50,18 +50,21 @@ export const Signup=()=>{
                     setPassword(e.target.value)
                 }} label={"Enter your Password"}placeholder={"Password"} />
                 <Button onClick={async()=>{
-                    const response=await axios.post("https://xero-pay-backend.vercel.app/user/signup",{
+                    try{
+                        const response=await axios.post("https://xero-pay-backend.vercel.app/user/signup",{
                         email,
                         firstName,
                         lastName,
                         password
-                    })
-                    if(!response){
+                        })
+                        navigate("/dashboard")
+                        localStorage.setItem("token", response.data.token)
+                        
+                    }
+                    catch(error){
+                        console.log(error)
                         setError("Invalid Details")
                     }
-                    navigate("/dashboard")
-                    localStorage.setItem("token", response.data.token)
-                    
                     }
                 }
                 label={"Sign Up"}
