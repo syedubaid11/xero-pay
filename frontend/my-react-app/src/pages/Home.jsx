@@ -19,11 +19,10 @@ export const Home=()=>{
         }}
       >
     
-        <div className="flex items-center justify-center w-screen h-screen ">
 
-        <div className="flex-col">
+        <div className="flex flex-col justify-center items-center ">
 
-            <div className="flex justify-center text-6xl font-extralight  mb-20">
+            <div className="flex justify-center text-6xl font-extralight mb-20">
                 xero pay
             </div>
 
@@ -39,7 +38,6 @@ export const Home=()=>{
             </div>  
         </div>    
 
-        </div> 
         </motion.div>
         </AuroraBackground>
         </>
