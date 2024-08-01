@@ -25,7 +25,7 @@ export const Pay=()=>{
         }
     }
     return(
-        <>
+        <div className="h-screeen w-screen">
         <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -37,8 +37,8 @@ export const Pay=()=>{
         >
         <Top label={"xero pay"}/>
 
-        <div className="flex justify-center items-center w-50  min-h-screen">
-            <div className="flex flex-col justify-center items-center h-80 border-2 p-10 rounded-2xl mb-40">
+        <div className="flex justify-center items-center w-50">
+            <div className="flex flex-col justify-center items-center h-80 border-2 p-10 rounded-2xl mb-40 h-30 w-50 mt-40">
                 <div className="mb-20">
                     <p>Name: {name}</p>
                 </div>
@@ -67,7 +67,7 @@ export const Pay=()=>{
         </div>
         </motion.div>
 
-        </>
+        </div>
 
     )
 }
