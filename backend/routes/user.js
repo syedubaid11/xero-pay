@@ -4,6 +4,8 @@ const zod=require("zod");
 const { User } =require("../db");
 const { Account } =require("../db")
 const mongoose=require("mongoose")
+const jwt=require("jsonwebtoken")
+const JWT_SECRET=require("../jwtconfig")
 
 
 
@@ -51,6 +53,32 @@ router.post("/signup",async(req,res)=>{
     }
 })
 
+
+router.post("/signin",async (req,res,next)=>{
+    const {success}=signinBody.safeParse(req.body);
+    if(!success){
+        res.json({
+            message:"Invalid Credentials!"
+        })
+    }
+    else{
+        const existingUser=User.findOne({
+            email:req.body.email,
+            password:req.body.password
+        })
+        if(existingUser){
+            const token=jwt.sign({
+                userID:existingUser._id
+            },JWT_SECRET)
+            
+        }
+        res.json({
+            message:"User not found"
+        })
+        
+    }
+
+})
 
 /*middleware add
 router.post("/signin",                 async(res,req)=>{
