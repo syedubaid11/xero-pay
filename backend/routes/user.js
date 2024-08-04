@@ -3,6 +3,8 @@ const router=Router();
 const zod=require("zod");
 const { User } =require("../db");
 const { Account } =require("../db")
+const mongoose=require("mongoose")
+
 
 
 
@@ -100,8 +102,34 @@ router.post('/account',async(req,res)=>{
 
 })
 
-router.put('/account',async(res,req)=>{
-    
-})
+//fix this 
+  
+  router.put('/pay/:id', async (req, res) => {
+    const { id } = req.params;
+    const { balance } = req.body;
+
+    console.log(balance)
+
+      const updatedUser = await updateUserBalance(id, balance);
+      if (!updatedUser) {
+        return res.status(404).send('User not found');
+      }
+      else{
+        res.send(`User with ID ${id} updated successfully with new balance!`);
+      }
+   
+  });
+
+  const updateUserBalance = async (id, balance) => {
+    const userId = new mongoose.Types.ObjectId(id);
+      if(userId){
+        console.log(userId)
+        const user = await Account.findByIdAndUpdate(userId, { balance: balance }, { new: true });
+        return user;
+      }
+      else{
+        console.log("ERROR IN UPDATE USER BALANCE")
+      }   
+  };
 
 module.exports=router;

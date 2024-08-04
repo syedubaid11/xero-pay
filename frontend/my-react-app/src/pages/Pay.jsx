@@ -46,12 +46,11 @@ export const Pay=()=>{
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                const response=axios.post("https://xero-pay-backend.vercel.app/user/pay",{
-                                    balance
-                                }
-                                .then(response=>{
-                                    console.log("Balance successfully added")
-                                }))
+                                axios.put(`http://localhost:3000/user/pay/${id}`,balance)
+                                .then(console.log("Balance has been added successfully"))
+                                .catch((error)=>{
+                                    console.log("Error while transferring")
+                                })
                                 
                             }}label={"Pay"}/>
                         </div>
