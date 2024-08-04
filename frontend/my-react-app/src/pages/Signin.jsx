@@ -6,12 +6,14 @@ import { InputBox } from "../components/input"
 import { Button } from "../components/button"
 import { BottomWarning } from "../components/bottomwarning"
 import { motion } from "framer-motion"
+import { Navigate, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 
 export const Signin=()=>{
     const[password,setPassword]=useState('')
     const[email,setEmail]=useState('')
+    const navigate=useNavigate();
     return(
         <>
         <motion.div
@@ -43,6 +45,9 @@ export const Signin=()=>{
                     password,
                     email
                 })
+                if(response){
+                    navigate("/dashboard")
+                }
 
             }}/>
             <BottomWarning label={"Don't have an account?"} buttonText={"Sign Up"} to={"/signup"}/>
