@@ -28,9 +28,11 @@ export const Users=()=>{
 
     const map=user.map((item)=>{
       return(
-        <div className="flex mt-5 font-light justify-between text-xl ">
+        <div className="flex mt-5 font-light justify-between text-xl border-t-2">
           <Usersinfo name={item.firstName} />
-          <ButtonDashboard label={"Pay"} onClick={(e)=>{navigate("/pay?id="+item._id+"&name="+item.firstName)}}/>
+          <div className="mt-6">
+            <ButtonDashboard label={"Pay"} onClick={(e)=>{navigate("/pay?id="+item._id+"&name="+item.firstName)}}/>
+          </div>
         </div>
         ) 
     })
