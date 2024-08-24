@@ -47,8 +47,16 @@ router.post("/signup",async(req,res)=>{
         lastName:req.body.lastName,
         password:req.body.password
     })
+    payload={
+        email:req.body.email,
+        firstName:req.body.firstName,
+        lastName:req.body.lastName,
+        password:req.body.password
+    }
+    token=jwt.sign(payload,JWT_SECRET)
     res.json({
-        message:"Account created successfully"
+        message:"Account created successfully",
+        token:token
     })
     }
 })

@@ -16,6 +16,8 @@ export const Signup=()=>{
     const[password,setPassword]=useState('')
     const[error,setError]=useState('')
     const navigate=useNavigate();
+    
+    const JWT_SECRET=""
   
     return(
         <>
@@ -50,6 +52,10 @@ export const Signup=()=>{
                     setPassword(e.target.value)
                 }} label={"Enter your Password"}placeholder={"Password"} />
                 <Button onClick={async()=>{
+                    const payload={
+                        email:email,
+                        password:password
+                    }
                     try{
                         const response=await axios.post("https://xero-pay-backend.vercel.app/user/signup",{
                         email,
@@ -58,6 +64,7 @@ export const Signup=()=>{
                         password
                         })
                         navigate("/dashboard")
+
                         localStorage.setItem("token", response.data.token)
                         
                     }
