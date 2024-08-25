@@ -1,3 +1,4 @@
+let env=require('dotenv').config();
 const { Router } = require("express");
 const router=Router();
 const zod=require("zod");
@@ -5,7 +6,6 @@ const { User } =require("../db");
 const { Account } =require("../db")
 const mongoose=require("mongoose")
 const jwt=require("jsonwebtoken")
-const JWT_SECRET=require("../jwtconfig")
 
 
 
@@ -27,6 +27,7 @@ const accountBody=zod.object({
     balance:zod.string()
 })
 router.post("/signup",async(req,res)=>{
+    console.log(env)
     const{success}=signupBody.safeParse(req.body);
     if(!success){
         return res.status(411).json({
@@ -47,13 +48,12 @@ router.post("/signup",async(req,res)=>{
         lastName:req.body.lastName,
         password:req.body.password
     })
-    payload={
-        email:req.body.email,
-        firstName:req.body.firstName,
-        lastName:req.body.lastName,
+    const payload = {
+        email: req.body.email,
         password:req.body.password
-    }
-    token=jwt.sign(payload,JWT_SECRET)
+      };
+    
+    token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'1h'})
     res.json({
         message:"Account created successfully",
         token:token
@@ -75,9 +75,8 @@ router.post("/signin",async (req,res,next)=>{
             password:req.body.password
         })
         if(existingUser){
-            const token=jwt.sign({
-                userID:existingUser._id
-            },JWT_SECRET)
+            const token=jwt.sign(
+                payload,JWT_SECRET)
         res.json({
             token:token,
         })    
