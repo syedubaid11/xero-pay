@@ -1,4 +1,4 @@
-let env=require('dotenv').config();
+require('dotenv').config();
 const { Router } = require("express");
 const router=Router();
 const zod=require("zod");
@@ -6,8 +6,6 @@ const { User } =require("../db");
 const { Account } =require("../db")
 const mongoose=require("mongoose")
 const jwt=require("jsonwebtoken")
-
-
 
 
 const signupBody=zod.object({
@@ -27,7 +25,6 @@ const accountBody=zod.object({
     balance:zod.string()
 })
 router.post("/signup",async(req,res)=>{
-    console.log(env)
     const{success}=signupBody.safeParse(req.body);
     if(!success){
         return res.status(411).json({
@@ -56,11 +53,10 @@ router.post("/signup",async(req,res)=>{
     token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'1h'})
     res.json({
         message:"Account created successfully",
-        token:token
+        token:token,
     })
     }
 })
-
 
 router.post("/signin",async (req,res,next)=>{
     const {success}=signinBody.safeParse(req.body);
