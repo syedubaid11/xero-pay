@@ -6,6 +6,7 @@ const { User } =require("../db");
 const { Account } =require("../db")
 const mongoose=require("mongoose")
 const jwt=require("jsonwebtoken")
+const middleware =require('../middleware/middleware');
 
 
 const signupBody=zod.object({
@@ -54,6 +55,7 @@ router.post("/signup",async(req,res)=>{
     res.json({
         message:"Account created successfully",
         token:token,
+        userId:user._id
     })
     }
 })
@@ -93,8 +95,9 @@ router.post("/signin",                 async(res,req)=>{
 })
 */
 
-router.get('/data', async (req, res) => {
+router.get('/data', middleware ,async (req, res) => {
     try {
+
       const data = await User.find();
       res.json(data);
     } catch (error) {

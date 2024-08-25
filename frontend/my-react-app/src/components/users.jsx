@@ -11,7 +11,11 @@ export const Users=()=>{
 
 
     useEffect(()=>{
-        axios.get('https://xero-pay-backend.vercel.app/user/data')
+        axios.get('http://localhost:3000/user/data', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Include the token in the Authorization header
+          }
+        })
         .then(response => {
           const data=response.data
           //setting up the user state
