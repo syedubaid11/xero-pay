@@ -57,11 +57,12 @@ export const Signup=()=>{
                         password:password
                     }
                     try{
+                       
                         const response=await axios.post("http://localhost:3000/user/signup",{
-                        email,
-                        firstName,
-                        lastName,
-                        password
+                            email,
+                            firstName,
+                            lastName,
+                            password
                         }
                         )
                         console.log(response.data.token)
@@ -69,7 +70,11 @@ export const Signup=()=>{
 
                         const userid=response.data.userId
 
-                        navigate(`/dashboard/${userid}`)
+                        await axios.post('http://localhost:3000/user/account',{
+                            userId:userid
+                        })
+
+                        navigate(`/dashboard/sid=${userid}`)
 
                         
                     }

@@ -9,11 +9,14 @@ import axios from "axios";
 
 export const Pay=()=>{
     const [searchParams]=useSearchParams();
-    const id=searchParams.get("id");
+    const recipient=searchParams.get("id");
     const name=searchParams.get("name");
+    const sender=searchParams.get("sid")
     const[amount,setAmount]=useState([])
     const[error,setError]=useState("")
     console.log(amount)
+
+    console.log(sender)
 
     const handleChange=(e)=>{
         if(e.target.value>10000){
@@ -46,7 +49,12 @@ export const Pay=()=>{
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                axios.put(`http://localhost:3000/user/pay/${id}`,balance)
+                                axios.put(`http://localhost:3000/user/account`,{
+                                    //senderId:id,
+                                    recipientId:recipient,
+                                    senderId:sender,
+                                    amount:amount
+                                })
                                 .then(console.log("Balance has been added successfully"))
                                 .catch((error)=>{
                                     console.log("Error while transferring")

@@ -22,7 +22,6 @@ const signinBody=zod.object({
 })
 const accountBody=zod.object({
     userId:zod.string(),
-    balance:zod.string()
 })
 
 const transferBody=zod.object({
@@ -153,7 +152,7 @@ router.post('/account',async(req,res)=>{
 })
 
 router.put('/account', async (req,res)=>{
-    const success=accountBody.safeParse(req.body)
+    const success=transferBody.safeParse(req.body)
 
     if(success){
         try{
@@ -179,7 +178,7 @@ router.put('/account', async (req,res)=>{
                 {userId:req.body.senderId},
                 {$inc:{balance:-amount}}
             )
-            
+
             return res.json({message:"Amount transferred successfully"})
         }
         catch(error){

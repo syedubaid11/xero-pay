@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Usersinfo from "./usersinfo";
 import { ButtonDashboard } from "./button-dashboard";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const Users=()=>{
     const[user,setUser]=useState([ ])
+    const {sid}=useParams();
+    const parsedsid=sid.split('=')
+    const senderid=parsedsid[1]
 
     const navigate=useNavigate();
 
@@ -35,7 +39,7 @@ export const Users=()=>{
         <div className="flex mt-5 font-light justify-between text-xl border-t-2">
           <Usersinfo name={item.firstName} />
           <div className="mt-6">
-            <ButtonDashboard label={"Pay"} onClick={(e)=>{navigate("/pay?id="+item._id+"&name="+item.firstName)}}/>
+            <ButtonDashboard label={"Pay"} onClick={(e)=>{navigate("/pay?rid="+item._id+"&sid="+senderid+"&name="+item.firstName)}}/>
           </div>
         </div>
         ) 
