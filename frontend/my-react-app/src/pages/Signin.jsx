@@ -49,7 +49,7 @@ export const Signin=()=>{
                         password,
                         email
                     })
-                    if(response){
+                    if(response.status==200){
                         const token=response.data.token
                         const userId=response.data.userId
                         localStorage.setItem("token",token)

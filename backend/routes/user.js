@@ -68,29 +68,31 @@ router.post("/signup",async(req,res)=>{
 router.post("/signin",async (req,res)=>{
     const {success}=signinBody.safeParse(req.body);
     if(!success){
-        res.json({
+        return res.json({
             message:"Invalid Credentials!"
         })
     }
-    else{
         try{
             const existingUser=await User.findOne({
                 email:req.body.email,
                 password:req.body.password
             })
-            console.log(existingUser)
+            if(!existingUser){
+                return res.status(411).json({
+                    message:"User not found!"
+                })
+            }
             const payload={
                 email:req.body.email,
                 password:req.body.password
             }
-            if(existingUser){
             token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'1h'})
-            res.json({
+            return res.status(200).json({
                 message:"Account logged in successfully",
                 token:token,
                 userId:existingUser._id
             })    
-            }
+            
         }
         catch(error){
             return res.json({
@@ -98,8 +100,6 @@ router.post("/signin",async (req,res)=>{
             })
 
         }
-    }
-
 })
 
 
