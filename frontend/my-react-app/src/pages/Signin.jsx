@@ -7,12 +7,15 @@ import { Button } from "../components/button"
 import { BottomWarning } from "../components/bottomwarning"
 import { motion } from "framer-motion"
 import { Navigate, useNavigate } from "react-router-dom"
+import { Error } from "../components/error"
 import axios from "axios"
 
 
 export const Signin=()=>{
     const[password,setPassword]=useState('')
     const[email,setEmail]=useState('')
+    const[error,setError]=useState('')
+
     const navigate=useNavigate();
     return(
         <>
@@ -41,22 +44,25 @@ export const Signin=()=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
             <Button label={"Sign In "} onClick={async()=>{
-                const response=await axios.post("http://localhost:3000/user/signin",{
-                    password,
-                    email
-                })
-            
-                if(response){
-                    const token=response.data.token
-                    const userId=response.data.userId
-                    localStorage.setItem("token",token)
-                    navigate(`/dashboard/sid=${userId}`)
+                try{
+                    const response=await axios.post("http://localhost:3000/user/signin",{
+                        password,
+                        email
+                    })
+                    if(response){
+                        const token=response.data.token
+                        const userId=response.data.userId
+                        localStorage.setItem("token",token)
+                        navigate(`/dashboard/sid=${userId}`)
+                    }
                 }
-                else{
-                    console.log('Cannot find the user')
+                catch(error){
+                    setError("Invalid email or password")
                 }
+               
 
             }}/>
+            <Error label={error}/>
             <BottomWarning label={"Don't have an account?"} buttonText={"Sign Up"} to={"/signup"}/>
         </div>
 
