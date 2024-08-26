@@ -17,8 +17,8 @@ const signupBody=zod.object({
 })
 
 const signinBody=zod.object({
-    password:zod.string(),
-    email:zod.string().email()  
+    email:zod.string().email(),  
+    password:zod.string()
 })
 const accountBody=zod.object({
     userId:zod.string(),
@@ -65,7 +65,7 @@ router.post("/signup",async(req,res)=>{
     }
 })
 
-router.post("/signin",async (req,res,next)=>{
+router.post("/signin",async (req,res)=>{
     const {success}=signinBody.safeParse(req.body);
     if(!success){
         res.json({
@@ -73,32 +73,35 @@ router.post("/signin",async (req,res,next)=>{
         })
     }
     else{
-        const existingUser=User.findOne({
-            email:req.body.email,
-            password:req.body.password
-        })
-        if(existingUser){
-            const token=jwt.sign(
-                payload,JWT_SECRET)
-        res.json({
-            token:token,
-        })    
-            
+        try{
+            const existingUser=await User.findOne({
+                email:req.body.email,
+                password:req.body.password
+            })
+            console.log(existingUser)
+            const payload={
+                email:req.body.email,
+                password:req.body.password
+            }
+            if(existingUser){
+            token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'1h'})
+            res.json({
+                message:"Account logged in successfully",
+                token:token,
+                userId:existingUser._id
+            })    
+            }
         }
-        res.json({
-            message:"User not found"
-        })
-        
+        catch(error){
+            return res.json({
+                message:"User not found"
+            })
+
+        }
     }
 
 })
 
-/*middleware add
-router.post("/signin",                 async(res,req)=>{
-    const {success}=signinBody.safeParse(req.body);
-    
-})
-*/
 
 router.get('/data', middleware ,async (req, res) => {
     try {
@@ -160,11 +163,13 @@ router.put('/account', async (req,res)=>{
             const recipient=await Account.findOne({userId:req.body.recipientId})
             const amount=await req.body.amount //need 3 things in the req body
 
-            const balanceSender=sender.balance
 
             if(!sender||!recipient){
-                res.json({message:"Users not found"})
+                return res.json({message:"Users not found"})
             }
+
+            const balanceSender=sender.balance
+
 
             if(amount>balanceSender){
                 return res.json({message:"Amount cannot be greater than your balance!"})
@@ -191,35 +196,5 @@ router.put('/account', async (req,res)=>{
     }
 
 })
-
-//fix this 
-  
-  router.put('/pay/:id', async (req, res) => {
-    const { id } = req.params;
-    const { balance } = req.body;
-
-    console.log(balance)
-
-      const updatedUser = await updateUserBalance(id, balance);
-      if (!updatedUser) {
-        return res.status(404).send('User not found');
-      }
-      else{
-        res.send(`User with ID ${id} updated successfully with new balance!`);
-      }
-   
-  });
-
-  const updateUserBalance = async (id, balance) => {
-    const userId = new mongoose.Types.ObjectId(id);
-      if(userId){
-        console.log(userId)
-        const user = await Account.findByIdAndUpdate(userId, { balance: balance }, { new: true });
-        return user;
-      }
-      else{
-        console.log("ERROR IN UPDATE USER BALANCE")
-      }   
-  };
 
 module.exports=router;

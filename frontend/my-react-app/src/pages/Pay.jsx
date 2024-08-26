@@ -43,7 +43,7 @@ export const Pay=()=>{
         <div className="flex justify-center items-center w-50">
             <div className="flex flex-col justify-center items-center h-80 border-2 p-10 rounded-2xl mb-40 h-30 w-50 mt-40">
                 <div className="mb-20">
-                    <p>Name: {name}</p>
+                    <p>Transferring to:{name}</p>
                 </div>
                 <div className="flex ">
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
@@ -57,7 +57,7 @@ export const Pay=()=>{
                                 })
                                 .then(console.log("Balance has been added successfully"))
                                 .catch((error)=>{
-                                    console.log("Error while transferring")
+                                    console.log(`Error while transferring${error}`)
                                 })
                                 
                             }}label={"Pay"}/>

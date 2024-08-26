@@ -23,9 +23,7 @@ export const Users=()=>{
         .then(response => {
           const data=response.data
           //setting up the user state
-          setUser(data)
-          console.log(data)
-          
+          setUser(data)          
         })
         .catch(error => {
           console.error('There was an error fetching the data!', error);

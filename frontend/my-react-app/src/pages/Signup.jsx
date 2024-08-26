@@ -16,9 +16,7 @@ export const Signup=()=>{
     const[password,setPassword]=useState('')
     const[error,setError]=useState('')
     const navigate=useNavigate();
-    
-    const JWT_SECRET=""
-  
+      
     return(
         <>
         <motion.div
@@ -65,9 +63,7 @@ export const Signup=()=>{
                             password
                         }
                         )
-                        console.log(response.data.token)
                         localStorage.setItem("token", response.data.token)
-
                         const userid=response.data.userId
 
                         await axios.post('http://localhost:3000/user/account',{

@@ -41,12 +41,21 @@ export const Signin=()=>{
                 setPassword(e.target.value)
             }} label={"Enter your Password"}placeholder={"Password"} />
             <Button label={"Sign In "} onClick={async()=>{
-                const response=await axios.post("https://xero-pay-backend.vercel.app/signin",{
+                const response=await axios.post("http://localhost:3000/user/signin",{
                     password,
                     email
                 })
+            
                 if(response){
-                    navigate("/dashboard")
+                    console.log(response.data)
+                    const token=response.data.token
+                    const userId=response.data.userId
+                    console.log(userId)//remove this
+                    localStorage.setItem("token",token)
+                    navigate(`/dashboard/sid=${userId}`)
+                }
+                else{
+                    console.log('Cannot find the user')
                 }
 
             }}/>
