@@ -8,7 +8,6 @@ const mongoose=require("mongoose")
 const jwt=require("jsonwebtoken")
 const middleware =require('../middleware/middleware');
 
-
 const signupBody=zod.object({
     email:zod.string().email(),
     firstName:zod.string(),
@@ -25,6 +24,13 @@ const accountBody=zod.object({
     userId:zod.string(),
     balance:zod.string()
 })
+
+const transferBody=zod.object({
+    senderId:zod.string(),
+    recipientId:zod.string(),
+    amount:zod.number()
+})
+
 router.post("/signup",async(req,res)=>{
     const{success}=signupBody.safeParse(req.body);
     if(!success){
@@ -97,13 +103,14 @@ router.post("/signin",                 async(res,req)=>{
 
 router.get('/data', middleware ,async (req, res) => {
     try {
-
       const data = await User.find();
       res.json(data);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   });
+
+
 
 router.get('/account',async(req,res)=>{
     try{
@@ -126,16 +133,63 @@ router.post('/account',async(req,res)=>{
         _id:req.body.userId
     })
     if(existingUser){
-        const account=Account.create({
-            userId:req.body.userId,
-            balance:req.body.balance
-        })
-        return res.json("Balance has been successfully added to the user")
+        try{
+            const account=Account.create({
+                userId:req.body.userId,
+                balance:10000
+            })
+            return res.json("Balance has been successfully added to the user")
+
+        }
+        catch(error){
+            return res.json(`Balance could not be added ${error}`)
+        }
+        
     }
     else{
         return res.json("Could not find user with that account")
     }
-    
+
+})
+
+router.put('/account', async (req,res)=>{
+    const success=accountBody.safeParse(req.body)
+
+    if(success){
+        try{
+            const sender=await Account.findOne({userId:req.body.senderId})
+            const recipient=await Account.findOne({userId:req.body.recipientId})
+            const amount=await req.body.amount //need 3 things in the req body
+
+            const balanceSender=sender.balance
+
+            if(!sender||!recipient){
+                res.json({message:"Users not found"})
+            }
+
+            if(amount>balanceSender){
+                return res.json({message:"Amount cannot be greater than your balance!"})
+            }
+
+            await Account.updateOne(
+                { userId: req.body.recipientId },
+                { $inc: { balance: amount } } // Increase balance by amount
+              );
+            await Account.updateOne(
+                {userId:req.body.senderId},
+                {$inc:{balance:-amount}}
+            )
+            
+            return res.json({message:"Amount transferred successfully"})
+        }
+        catch(error){
+            return res.json({message:`Error ${error}`})
+
+        }
+    }
+    else{
+        return res.json({message:"Couldn't parse the info"})
+    }
 
 })
 
