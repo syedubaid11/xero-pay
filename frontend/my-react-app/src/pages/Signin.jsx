@@ -47,10 +47,8 @@ export const Signin=()=>{
                 })
             
                 if(response){
-                    console.log(response.data)
                     const token=response.data.token
                     const userId=response.data.userId
-                    console.log(userId)//remove this
                     localStorage.setItem("token",token)
                     navigate(`/dashboard/sid=${userId}`)
                 }
