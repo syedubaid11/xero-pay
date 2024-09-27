@@ -49,7 +49,7 @@ export const Pay=()=>{
                     <InputBox onChange={handleChange}label={"Enter the amount"} />
                         <div className="mt-9 ml-4">
                             <ButtonDashboard onClick={(e)=>{
-                                axios.put(`http://localhost:3000/user/account`,{
+                                axios.put(`https://xero-pay-backend.vercel.app/user/account`,{
                                     //senderId:id,
                                     recipientId:recipient,
                                     senderId:sender,

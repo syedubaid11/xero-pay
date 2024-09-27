@@ -55,7 +55,7 @@ export const Signup=()=>{
                         password:password
                     }
                     try{
-                        const response=await axios.post("http://localhost:3000/user/signup",{
+                        const response=await axios.post("https://xero-pay-backend.vercel.app/user/signup",{
                             email,
                             firstName,
                             lastName,
@@ -65,7 +65,7 @@ export const Signup=()=>{
                         localStorage.setItem("token", response.data.token)
                         const userid=response.data.userId
 
-                        await axios.post('http://localhost:3000/user/account',{
+                        await axios.post('https://xero-pay-backend.vercel.app/user/account',{
                             userId:userid
                         })
 
